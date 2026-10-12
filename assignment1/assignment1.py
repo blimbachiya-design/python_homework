@@ -1,3 +1,6 @@
+from turtle import title
+
+
 def hello():
     return "Hello!"
 def greet(name):
@@ -76,18 +79,17 @@ def student_scores(mode, **kwargs):
         return max(kwargs, key=kwargs.get)
 
 
-def titleize(string):
-    words = string.split()
-    small_words = {"and", "or", "the", "a", "an", "of", "in", "to"}
-    result = []
+def titleize(title):
+    small_words = {"a", "on", "an", "the", "of", "and", "is", "in"}
+    words = title.split()
 
     for i, word in enumerate(words):
-        if i != 0 and word.lower() in small_words:
-            result.append(word.lower())
+        if i != 0 and i != len(words) - 1 and word.lower() in small_words:
+            words[i] = word.lower()
         else:
-            result.append(word.capitalize())
+            words[i] = word.capitalize()
 
-    return " ".join(result)
+    return " ".join(words)
 
 def hangman(secret, guess):
     result = ""
